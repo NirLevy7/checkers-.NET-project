@@ -1,0 +1,33 @@
+@page
+@model CheckersGame.Web.Pages.Queries.AllPlayersModel
+@{
+    ViewData["Title"] = "All Players";
+}
+
+<h2>All Players (with at least one finished game)</h2>
+
+<div class="mb-2">
+    Sort:
+    <a asp-page="AllPlayers" asp-route-sort="asc" class="btn btn-sm btn-outline-secondary">A → Z</a>
+    <a asp-page="AllPlayers" asp-route-sort="desc" class="btn btn-sm btn-outline-secondary">Z → A</a>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th><th>First Name</th><th>Phone</th><th>Country</th><th>Registered</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Players)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.FirstName</td>
+                <td>@p.Phone</td>
+                <td>@p.Country.Name</td>
+                <td>@p.RegisteredAt.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

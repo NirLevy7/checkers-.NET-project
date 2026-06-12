@@ -1,0 +1,40 @@
+@page
+@model CheckersGame.Web.Pages.Queries.GamesByPlayerModel
+@{ ViewData["Title"] = "Games by Player"; }
+
+<h2>Games by Player</h2>
+<form method="get">
+    <div class="row g-2 align-items-end mb-3">
+        <div class="col-md-3">
+            <label class="form-label">Select Player:</label>
+            <select asp-for="SelectedName" asp-items="Model.PlayerNames"
+                    class="form-select" onchange="this.form.submit()">
+                <option value="">-- Select --</option>
+            </select>
+        </div>
+    </div>
+</form>
+
+@if (Model.Games.Any())
+{
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr><th>Game ID</th><th>Start</th><th>Status</th><th>Duration (s)</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var g in Model.Games)
+            {
+                <tr>
+                    <td>@g.Id</td>
+                    <td>@g.StartTime.ToString("g")</td>
+                    <td>@g.Status</td>
+                    <td>@(g.EndTime.HasValue ? (int)(g.EndTime.Value - g.StartTime).TotalSeconds : 0)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (!string.IsNullOrEmpty(Model.SelectedName))
+{
+    <p class="text-muted">No games found for this player.</p>
+}

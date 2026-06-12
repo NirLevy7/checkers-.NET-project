@@ -1,0 +1,28 @@
+@page
+@model CheckersGame.Web.Pages.Queries.GroupedByCountModel
+@{ ViewData["Title"] = "Players Grouped by Game Count"; }
+
+<h2>Players Grouped by Number of Games</h2>
+
+@foreach (var group in Model.Groups)
+{
+    <h4 class="mt-4">
+        @(group.GameCount == 0 ? "Did not play" :
+          group.GameCount == 1 ? "One game" :
+          $"{group.GameCount} games") :
+    </h4>
+    <table class="table table-sm table-bordered">
+        <thead class="table-secondary">
+            <tr><th>ID</th><th>Name</th><th>Phone</th><th>Country</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var p in group.Players)
+            {
+                <tr>
+                    <td>@p.Id</td><td>@p.FirstName</td>
+                    <td>@p.Phone</td><td>@p.Country?.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

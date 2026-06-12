@@ -1,0 +1,39 @@
+=====================================================
+  HOW TO CREATE THE .dacpac FILES (do this manually)
+=====================================================
+
+You need two dacpac files, one per database.
+The file name must exactly match the database name.
+
+-------------------------------------------------------
+Step 1 — For CheckersCentralDb (central/server database)
+-------------------------------------------------------
+1. Open SQL Server Management Studio (SSMS)
+2. Connect to: (LocalDB)\MSSQLLocalDB
+3. In Object Explorer → Databases → right-click "CheckersCentralDb"
+4. Choose: Tasks → Extract Data-tier Application...
+5. Click Next
+6. IMPORTANT: check "Extract schema and data" (to include the data)
+7. Save location: this folder (3_Databases)
+8. File name: CheckersCentralDb.dacpac   ← exact name!
+9. Finish
+
+-------------------------------------------------------
+Step 2 — For CheckersReplayDb (local replay database)
+-------------------------------------------------------
+1. Same steps as above
+2. Right-click "CheckersReplayDb"
+3. File name: CheckersReplayDb.dacpac   ← exact name!
+
+-------------------------------------------------------
+Result: this folder should contain
+-------------------------------------------------------
+  CheckersCentralDb.dacpac
+  CheckersReplayDb.dacpac
+  Countries.sql
+  Players.sql
+  Games.sql
+  GamePlayers.sql
+  ReplayGames.sql
+  ReplayMoves.sql
+=====================================================

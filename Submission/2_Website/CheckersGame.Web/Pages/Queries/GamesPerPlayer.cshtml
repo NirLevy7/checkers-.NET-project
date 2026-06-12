@@ -1,0 +1,14 @@
+@page
+@model CheckersGame.Web.Pages.Queries.GamesPerPlayerModel
+@{ ViewData["Title"] = "Games per Player"; }
+
+<h2>How Many Games Each Player Played</h2>
+<table class="table table-striped">
+    <thead class="table-dark"><tr><th>Player Name</th><th>Games Played</th></tr></thead>
+    <tbody>
+        @foreach (var r in Model.Results)
+        {
+            <tr><td>@r.Name</td><td>@r.Count</td></tr>
+        }
+    </tbody>
+</table>

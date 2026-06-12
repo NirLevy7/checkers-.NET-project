@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Checkers Game</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Checkers Game</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Register">Register</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Queries</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Queries/AllPlayers">All Players</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/PlayersByName">Players by Name</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/AllGames">All Games</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/FirstByCountry">First by Country</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/GamesByPlayer">Games by Player</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/GamesPerPlayer">Games per Player</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/GroupedByCount">Grouped by Count</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/ByCountry">Players by Country</a></li>
+                                <li><a class="dropdown-item" asp-page="/Queries/TopCountries">Top 2 Countries</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/EditPlayer">Edit Player</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Delete">Delete</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/About">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted mt-4">
+        <div class="container py-2">
+            &copy; 2026 Checkers Game Project
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

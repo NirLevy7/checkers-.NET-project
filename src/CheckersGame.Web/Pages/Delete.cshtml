@@ -1,0 +1,51 @@
+@page
+@model CheckersGame.Web.Pages.DeleteModel
+@{ ViewData["Title"] = "Delete"; }
+
+<h2>Delete</h2>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+<div class="row g-4 mt-2">
+
+    <!-- Delete a Game -->
+    <div class="col-md-5">
+        <div class="card border-warning">
+            <div class="card-header bg-warning">Delete a Game</div>
+            <div class="card-body">
+                <form method="post" asp-page-handler="DeleteGame">
+                    <div class="mb-3">
+                        <label class="form-label">Game ID:</label>
+                        <input asp-for="DeleteGameId" type="number" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-warning"
+                            onclick="return confirm('Delete this game?')">Delete Game</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete a Player -->
+    <div class="col-md-5">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white">Delete a Player</div>
+            <div class="card-body">
+                <p class="text-muted small">Deleting a player automatically deletes all their games.</p>
+                <form method="post" asp-page-handler="DeletePlayer">
+                    <div class="mb-3">
+                        <label class="form-label">Player ID:</label>
+                        <input asp-for="DeletePlayerId" type="number" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('This will delete the player AND all their games. Continue?')">
+                        Delete Player
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

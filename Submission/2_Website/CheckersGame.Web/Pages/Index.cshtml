@@ -1,0 +1,40 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mt-4">
+    <h1>Checkers Game</h1>
+    <p class="lead">Network Programming Final Project — Semester A 2026</p>
+    <hr />
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header bg-dark text-white">Step 1 — Register</div>
+            <div class="card-body">
+                <p>Register 1–10 players for a new game session.</p>
+                <a asp-page="/Register" class="btn btn-primary">Go to Registration</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header bg-dark text-white">Step 2 — Play</div>
+            <div class="card-body">
+                <p>Launch the desktop client, enter your player ID, and play against the server.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-header bg-dark text-white">Step 3 — Statistics</div>
+            <div class="card-body">
+                <p>View player and game statistics in the Queries section.</p>
+                <a asp-page="/Queries/AllPlayers" class="btn btn-secondary">View Queries</a>
+            </div>
+        </div>
+    </div>
+</div>

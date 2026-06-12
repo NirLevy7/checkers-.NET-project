@@ -1,0 +1,19 @@
+@page
+@model CheckersGame.Web.Pages.Queries.ByCountryModel
+@{ ViewData["Title"] = "Players by Country"; }
+
+<h2>Players by Country</h2>
+
+@foreach (var group in Model.Groups)
+{
+    <h4 class="mt-3">@group.Country</h4>
+    <table class="table table-sm table-bordered">
+        <thead class="table-secondary"><tr><th>ID</th><th>Name</th><th>Phone</th></tr></thead>
+        <tbody>
+            @foreach (var p in group.Players)
+            {
+                <tr><td>@p.Id</td><td>@p.FirstName</td><td>@p.Phone</td></tr>
+            }
+        </tbody>
+    </table>
+}

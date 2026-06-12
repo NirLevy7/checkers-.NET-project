@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CheckersGame.Api/CheckersGame.Api.csproj" />
+    <Project Path="src/CheckersGame.Client/CheckersGame.Client.csproj" />
+    <Project Path="src/CheckersGame.Data/CheckersGame.Data.csproj" />
+    <Project Path="src/CheckersGame.Shared/CheckersGame.Shared.csproj" />
+    <Project Path="src/CheckersGame.Web/CheckersGame.Web.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,17 @@
+@page
+@model CheckersGame.Web.Pages.Queries.PlayersByNameModel
+@{ ViewData["Title"] = "Players by Name (Last Game)"; }
+
+<h2>Players — Name &amp; Last Game Date (desc)</h2>
+<table class="table table-striped">
+    <thead class="table-dark"><tr><th>Name</th><th>Last Game Date</th></tr></thead>
+    <tbody>
+        @foreach (var r in Model.Results)
+        {
+            <tr>
+                <td>@r.Name</td>
+                <td>@(r.LastGame.HasValue ? r.LastGame.Value.ToShortDateString() : "-")</td>
+            </tr>
+        }
+    </tbody>
+</table>

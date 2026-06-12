@@ -1,0 +1,91 @@
+@page
+@model CheckersGame.Web.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register Players";
+}
+
+<h2>Register Players</h2>
+
+@if (Model.RegistrationSuccess)
+{
+    <div class="alert alert-success">
+        <strong>Registration successful!</strong>
+        Game #@Model.NewGameId has been created. Players may now launch the client and enter their IDs to start.
+    </div>
+}
+else
+{
+    <!-- Step 1: choose number of players -->
+    <form method="post" asp-page-handler="SetCount" class="mb-4">
+        <div class="row g-2 align-items-end">
+            <div class="col-auto">
+                <label class="form-label fw-bold">Number of players (1–10):</label>
+                <select asp-for="PlayerCount" class="form-select" style="width:100px">
+                    @for (int i = 1; i <= 10; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-secondary">Set Players</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Step 2: fill in each player's details -->
+    <form method="post" asp-page-handler="Register">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        @for (int i = 0; i < Model.Players.Count; i++)
+        {
+            <div class="card mb-3">
+                <div class="card-header bg-dark text-white">Player @(i + 1)</div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <!-- First Name -->
+                        <div class="col-md-3">
+                            <label asp-for="Players[i].FirstName" class="form-label">First Name</label>
+                            <input asp-for="Players[i].FirstName" class="form-control"
+                                   placeholder="At least 2 letters" />
+                            <span asp-validation-for="Players[i].FirstName" class="text-danger small"></span>
+                        </div>
+
+                        <!-- ID -->
+                        <div class="col-md-2">
+                            <label asp-for="Players[i].Id" class="form-label">ID (1–1000)</label>
+                            <input asp-for="Players[i].Id" class="form-control" type="number"
+                                   min="1" max="1000" />
+                            <span asp-validation-for="Players[i].Id" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="col-md-3">
+                            <label asp-for="Players[i].Phone" class="form-label">Phone (10 digits)</label>
+                            <input asp-for="Players[i].Phone" class="form-control"
+                                   placeholder="0501234567" maxlength="10" />
+                            <span asp-validation-for="Players[i].Phone" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="col-md-3">
+                            <label asp-for="Players[i].CountryId" class="form-label">Country</label>
+                            <select asp-for="Players[i].CountryId"
+                                    asp-items="Model.CountryOptions"
+                                    class="form-select">
+                                <option value="0">-- Select country --</option>
+                            </select>
+                            <span asp-validation-for="Players[i].CountryId" class="text-danger small"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary btn-lg">Register &amp; Create Game</button>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

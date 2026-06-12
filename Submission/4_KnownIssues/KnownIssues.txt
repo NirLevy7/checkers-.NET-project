@@ -1,0 +1,38 @@
+========================================
+  Checkers Game Project — Known Issues
+  Course: .NET Network Programming, Semester A 2026
+  Lecturer: Arnon Barkat
+========================================
+
+Submitter:
+  Name: Nir Levy
+  ID:   315699694
+
+----------------------------------------
+KNOWN ISSUES / INCOMPLETE FEATURES
+----------------------------------------
+
+None known at this time. All required sections have been implemented.
+
+If issues are discovered during defense, they will be noted here.
+
+----------------------------------------
+SECTION CHECKLIST
+----------------------------------------
+§10  Registration page                  ✓
+§10  Queries (§22–30)                   ✓
+§10  About page                         ✓
+§10  asp-page navigation links          ✓
+§12  WinForms board                     ✓
+§13  Time limit combo + countdown       ✓
+§14  Rectangle[,] matrix                ✓
+§15  Graphics + Timer animation         ✓
+§15  Bitmap free-drawing + clear        ✓
+§16  Win blink (5 sec green)            ✓
+§17  Game rules enforced (server side)  ✓
+§18  Player registration required       ✓
+§19  Server random move (no AI)         ✓
+§20  Replay (local DB, read-only)       ✓
+§21  LINQ-only query methods            ✓
+§31  Update player details              ✓
+§32  Delete player / game (cascade)     ✓

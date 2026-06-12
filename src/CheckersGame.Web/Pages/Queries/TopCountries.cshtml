@@ -1,0 +1,14 @@
+@page
+@model CheckersGame.Web.Pages.Queries.TopCountriesModel
+@{ ViewData["Title"] = "Top 2 Countries"; }
+
+<h2>Top 2 Countries by Games Played</h2>
+<table class="table table-striped">
+    <thead class="table-dark"><tr><th>Country</th><th>Games Played</th></tr></thead>
+    <tbody>
+        @foreach (var r in Model.Results)
+        {
+            <tr><td>@r.Country</td><td>@r.GameCount</td></tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+@page
+@model CheckersGame.Web.Pages.Queries.FirstByCountryModel
+@{ ViewData["Title"] = "First Player by Country"; }
+
+<h2>First Player to Play from Each Country</h2>
+<table class="table table-striped">
+    <thead class="table-dark"><tr><th>Country</th><th>Player</th><th>ID</th><th>First Game Date</th></tr></thead>
+    <tbody>
+        @foreach (var r in Model.Results)
+        {
+            <tr>
+                <td>@r.Country</td><td>@r.PlayerName</td><td>@r.PlayerId</td>
+                <td>@r.FirstGame.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
